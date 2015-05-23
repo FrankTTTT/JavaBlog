@@ -1,0 +1,9 @@
+problem:
+1: logout function
+2: popout remove asking window
+
+
+关于用户权限是如何处理
+
+
+ROLE_ADMIN, ROLE_USER.

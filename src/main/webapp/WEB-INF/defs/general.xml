@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<definition name="common" template="/WEB-INF/layouts/main.jsp">
+		<put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+	</definition>
+
+	<definition name="index" extends="common">
+		<put-attribute name="title" value="Java Blog Aggregator" />
+		<put-attribute name="body" value="/WEB-INF/jsp/login/index.jsp" />
+		<put-attribute name="current" value="index" />
+	</definition>
+
+	<definition name="users" extends="common">
+		<put-attribute name="title" value="Users" />
+		<put-attribute name="body" value="/WEB-INF/jsp/user/users.jsp" />
+		<put-attribute name="current" value="users" />
+	</definition>
+
+	<definition name="user-detail" extends="common">
+		<put-attribute name="title" value="User-Detail" />
+		<put-attribute name="body" value="/WEB-INF/jsp/user/user-detail.jsp" />
+		<put-attribute name="current" value="users" />
+	</definition>
+
+	<definition name="user-register" extends="common">
+		<put-attribute name="title" value="User registration" />
+		<put-attribute name="body" value="/WEB-INF/jsp/user/user-register.jsp" />
+		<put-attribute name="current" value="register" />
+	</definition>
+
+	<definition name="login" extends="common">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/jsp/login/login.jsp" />
+		<put-attribute name="current" value="login" />
+	</definition>
+
+	<definition name="loginError" extends="common">
+		<put-attribute name="title" value="Login Error" />
+		<put-attribute name="body" value="/WEB-INF/jsp/login/loginError.jsp" />
+		<put-attribute name="current" value="loginError" />
+	</definition>
+	
+	<definition name="main" extends="common" >
+		<put-attribute name="title" value="Marlabs Test" />
+		<put-attribute name="body" value="/WEB-INF/layouts/main.jsp" />
+		<put-attribute name="current" value="main" />
+	</definition>
+	
+	<definition name="testDetail" extends="common">
+		<put-attribute name="title" value="Marlabs Test Detail" />
+		<put-attribute name="body" value="/WEB-INF/jsp/test/test-detail.jsp"  />
+		<put-attribute name="current" value="testDetail" />
+	</definition>
+	
+	<definition name="frontEndMainPage" extends="common">
+		<put-attribute name="title" value="Marlabs back-end Test" />
+		<put-attribute name="body" value="/WEB-INF/jsp/test/fe-test.jsp" />
+		<put-attribute name="current" value="frontEndMainPage" />
+	</definition>
+	
+	<definition name="backEndMainPage" extends="common">
+		<put-attribute name="title" value="Marlabs front-end Test" />
+		<put-attribute name="body" value="/WEB-INF/jsp/test/be-test.jsp" />
+		<put-attribute name="current" value="backEndMainPage" />
+	</definition>
+	
+	<definition name="testTemplate" extends="common">
+		<put-attribute name="title" value="Marlabs front-end Test" />
+		<put-attribute name="body" value="/WEB-INF/jsp/test/test-template.jsp" />
+		<put-attribute name="current" value="template" />
+	</definition>
+	
+
+</tiles-definitions>
