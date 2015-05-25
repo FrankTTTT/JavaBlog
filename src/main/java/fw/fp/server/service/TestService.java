@@ -46,15 +46,16 @@ public class TestService {
 	}
 
 
-	public void saveItem(Test test, Item item) {
+
+	public Test getTest(User user, String category, String difficulty) {
 		// TODO Auto-generated method stub
-		
+		return testRepository.findByUserAndCategoryAndDifficulty(user, category, difficulty);
 	}
 
 
-	public Test getTest(String name, String category, String difficulty) {
+	public Test findByUserAndCategoryAndDifficulty(User user, String category,
+			String difficulty) {
 		// TODO Auto-generated method stub
-		User user = userRepository.findByName(name);
 		return testRepository.findByUserAndCategoryAndDifficulty(user, category, difficulty);
 	}
 	

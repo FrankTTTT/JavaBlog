@@ -16,7 +16,7 @@
 		<intercept-url pattern="/account**" access="hasRole('ROLE_USER')" />
 		<form-login login-page="/login.html" default-target-url="/account.html"
 			always-use-default-target="true" authentication-failure-url="/loginError.html" />
-		<logout logout-success-url="/index.html" />
+		<logout logout-success-url="/index.html" logout-url="/logout"/>
 	</http>
 
 

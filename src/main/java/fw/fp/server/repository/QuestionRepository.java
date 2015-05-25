@@ -11,6 +11,7 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
 	Question findByQuestionTestAndId(QuestionTest questionTest, int id);
 
-	
 
 }
+
+

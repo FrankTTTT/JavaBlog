@@ -64,14 +64,31 @@
 
 									<li class="${current=='users'? 'active':''}"><a
 										href='<spring:url value="/account.html" />'>My account</a></li>
+									
+									
+									
+									
+									
+									
+									
+									<c:url value="/logout" var="logoutUrl" />
 
-									<c:url var="logoutUrl" value="/logout" />
-									<form action="${logoutUrl}" method="post">
+									
+									<li class="${current=='logout'? 'active':''}">
+									
+									<div class="form-group form-control">
+										<form action="${logoutUrl}" method="post">
 										<input type="submit" value="Log out" /> <input type="hidden"
 											name="${_csrf.parameterName}" value="${_csrf.token}" />
-									</form>
+										</form>
+									</div>
+									
+									
+									</li>
 
 
+									
+									
 								</security:authorize>
 							</ul>
 						</nav>

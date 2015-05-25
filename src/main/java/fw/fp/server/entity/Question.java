@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -18,8 +19,8 @@ public class Question {
 	@GeneratedValue
 	private int id;
 	
-	@OneToOne(mappedBy="question")
-	private Item item;
+	@OneToMany(mappedBy="question")
+	private List<Item> items;
 	
 	
 	private String description;
@@ -33,14 +34,16 @@ public class Question {
 	@JoinColumn(name="questiontest_id")
 	private QuestionTest questionTest;
 
-	public Item getItem() {
-		return item;
+	
+	
+	public List<Item> getItems() {
+		return items;
 	}
 
-	public void setItem(Item item) {
-		this.item = item;
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
-	
+
 	public QuestionTest getQuestionTest() {
 		return questionTest;
 	}

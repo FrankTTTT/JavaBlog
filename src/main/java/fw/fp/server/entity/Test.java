@@ -17,12 +17,13 @@ public class Test {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+
 	
-	private String name;
 	private int score;
 	private String category;
 	private String difficulty;
 	
+
 	public String getDifficulty() {
 		return difficulty;
 	}
@@ -61,10 +62,5 @@ public class Test {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 }

@@ -10,9 +10,7 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-	data-target="#myModal">New test or not</button>
-
-
+	data-target="#myModal">New test</button>
 
 <form:form commandName="test" cssClass="form-horizontal">
 	<!-- Modal -->

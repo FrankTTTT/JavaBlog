@@ -14,4 +14,12 @@ public class QuestionTestService {
 	public QuestionTest findByCategoryAndDifficulty(String category, String difficulty) {
 		return questionTestRepository.findByCategoryAndDifficulty(category, difficulty);
 	}
+
+	
+	public String getUrl(String category, String difficulty, int id) {
+		QuestionTest qt = questionTestRepository.findByCategoryAndDifficulty(category, difficulty);
+		if(id == qt.getSize())	return "/test/template/" + category + "/" + difficulty + "/success.html";
+		int temp = id + 1;
+		return "/test/template/" + category + "/" + difficulty + "/" + temp + ".html";
+	}
 }

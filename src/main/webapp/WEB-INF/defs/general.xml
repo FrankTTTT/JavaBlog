@@ -74,5 +74,11 @@
 		<put-attribute name="current" value="template" />
 	</definition>
 	
+	<definition name="testSuccess" extends="common">
+		<put-attribute name="title" value="MarlabsTest" />
+		<put-attribute name="body" value="/WEB-INF/jsp/test/test-success.jsp" />
+		<put-attribute name="current" value="testSuccess" />
+	</definition>
+	
 
 </tiles-definitions>

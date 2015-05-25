@@ -13,7 +13,7 @@ public class Item {
 	@GeneratedValue
 	private Integer id;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="question_id")
 	private Question question;
 	
@@ -24,7 +24,6 @@ public class Item {
 	private boolean score;
 	private String useranswer;
 
-	
 	public boolean getScore(){
 		return this.score;
 	}
@@ -42,12 +41,6 @@ public class Item {
 	}
 	public void setScore(boolean score) {
 		this.score = score;
-	}
-	public String getAnswer() {
-		return useranswer;
-	}
-	public void setAnswer(String answer) {
-		this.useranswer = answer;
 	}
 	public Test getTest() {
 		return test;

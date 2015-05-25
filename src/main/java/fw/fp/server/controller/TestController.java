@@ -5,7 +5,6 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,9 @@ import fw.fp.server.entity.Item;
 import fw.fp.server.entity.Question;
 import fw.fp.server.entity.QuestionTest;
 import fw.fp.server.entity.Test;
-import fw.fp.server.repository.QuestionTestRepository;
+import fw.fp.server.entity.User;
+import fw.fp.server.repository.UserRepository;
+import fw.fp.server.service.ItemService;
 import fw.fp.server.service.QuestionService;
 import fw.fp.server.service.QuestionTestService;
 import fw.fp.server.service.TestService;
@@ -37,6 +38,9 @@ public class TestController {
 	
 	@Autowired
 	private QuestionTestService questionTestService;
+	
+	@Autowired 
+	private ItemService itemService;
 	
 	@ModelAttribute("item")
 	public Item construct(){
@@ -79,22 +83,34 @@ public class TestController {
 	
 	@RequestMapping("/template/{category}/{difficulty}/{id}")
 	public String question(Model model, @PathVariable String category,@PathVariable String difficulty, @PathVariable int id){
-		System.out.println("category:" + category + "difficulty:" + difficulty);
 		QuestionTest questionTest = questionTestService.findByCategoryAndDifficulty(category,difficulty);
-		if(questionTest == null)	System.out.println("@#$@#$@#$#@$@#$");
 		Question question = questionService.findByQuestionTestAndId(questionTest, id);
 		model.addAttribute(question);
+		model.addAttribute(questionTest);
 		return "testTemplate";
 	}
 	
 	
 	@RequestMapping(value="/template/{category}/{difficulty}/{id}", method=RequestMethod.POST)
 	public String questionHandler(@ModelAttribute("item") Item item, @PathVariable String category,@PathVariable String difficulty, @PathVariable int id, Principal principle){
-		
 		String name = principle.getName();
-		Test test = testService.getTest(name, category, difficulty);
-		testService.saveItem(test, item);
-		return "testTemplate";
+		User user = userService.findByName(name);
+		Test test = testService.getTest(user, category, difficulty);
+		QuestionTest qt = questionTestService.findByCategoryAndDifficulty(category, difficulty);
+		Question question = questionService.findByQuestionTestAndId(qt, id);
+		itemService.save(item, test, question);
+		String redirect = questionTestService.getUrl(category, difficulty, id);
+		System.out.println(redirect);
+		return "redirect:" + redirect;
+	}
+	
+	@RequestMapping("/template/{category}/{difficulty}/success")
+	public String successHandle(Model model, @PathVariable String category, @PathVariable String difficulty, Principal principal){
+		String name = principal.getName();
+		User user = userService.findByName(name);
+		Test test = testService.findByUserAndCategoryAndDifficulty(user, category, difficulty);
+		model.addAttribute(test);
+		return "testSuccess";
 	}
 	
 

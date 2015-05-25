@@ -16,7 +16,5 @@ public class QuestionService {
 	public Question findByQuestionTestAndId(QuestionTest questionTest, int id) {
 		return questionRepository.findByQuestionTestAndId(questionTest, id);
 	}
-	
-	
-	
+
 }

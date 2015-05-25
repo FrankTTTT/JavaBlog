@@ -71,15 +71,14 @@ public class InitDbService {
 		Test test = new Test();
 		test.setCategory("java");
 		test.setScore(0);
-		test.setName("java test1");
 		test.setUser(userAdmin);
 		testRepository.save(test);
-		
 		
 		
 		QuestionTest questionTest = new QuestionTest();
 		questionTest.setCategory("java");
 		questionTest.setDifficulty("easy");
+		questionTest.setSize(2);
 		questiontestRepository.save(questionTest);
 		
 		Question question1 = new Question();
